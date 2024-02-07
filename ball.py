@@ -8,6 +8,9 @@ import pygame
 
 
 class Ball(Box):
+    """
+    creates the ball class, which player will bounce and which will hit bricks
+    """
     def __init__(self, WIDTH=1, HEIGHT=1):
         Box.__init__(self, WIDTH, HEIGHT)
         self._SURFACE = pygame.Surface(self._DIM, pygame.SRCALPHA, 32)
@@ -19,7 +22,19 @@ class Ball(Box):
         )
 
     # --- modifiers --- #
+    def bounceX(self, MAX_X, MIN_X=0):
+        self.setX(self.getX() + self.getSpeed()*self.getDirX())  # pos/neg changes whether moving left or right
+        if self.getX() > MAX_X - self.getWidth():
+            self.setDirX(-1)
+        if self.getX() < MIN_X:
+            self.setDirX(1)
 
+    def bounceY(self, MAX_Y, MIN_Y=0):
+        self.setY(self.getY() + self.getSpeed()*self.getDirY())
+        if self.getY() > MAX_Y - self.getHeight():
+            self.setDirY(-1)
+        if self.getY() < MIN_Y:
+            self.setDirY(1)
 
     # --- accessors --- #
 
@@ -28,10 +43,10 @@ if __name__ == "__main__":
     from window import Window
     pygame.init()
 
-    WINDOW = Window("Boxes Subclass")
-    RED_BOX = Box(20, 20)
-    RED_BOX.setPOS(WINDOW.getWidth()//2, WINDOW.getHeight()//2)
-    RED_BOX.setColour((255, 0, 0))
+    WINDOW = Window("Test")
+    BALL = Ball(20, 20)
+    BALL.setPOS(WINDOW.getWidth()//2, WINDOW.getHeight()//2)
+    BALL.setColour((255, 0, 0))
 
     while True:
         for event in pygame.event.get():
@@ -39,7 +54,10 @@ if __name__ == "__main__":
                 pygame.quit()
                 exit()
 
+        BALL.bounceX(WINDOW.getWidth())
+        BALL.bounceY(WINDOW.getHeight())
+
         WINDOW.clearScreen()
-        WINDOW.getSurface().blit(RED_BOX.getSurface(), RED_BOX.getPOS())
+        WINDOW.getSurface().blit(BALL.getSurface(), BALL.getPOS())
         WINDOW.updateFrame()
 

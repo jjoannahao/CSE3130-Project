@@ -21,6 +21,12 @@ class MySprite:
         self.__DIR_Y = 1
 
     # --- modifier methods --- #
+    def setDirX(self, VALUE):
+        self.__DIR_X = VALUE
+
+    def setDirY(self, VALUE):
+        self.__DIR_Y = VALUE
+
     def setX(self, X):
         self.__X = X
         self.__POS = (self.__X, self.__Y)
@@ -69,28 +75,49 @@ class MySprite:
     def getY(self):
         return self.__Y
 
-    # def isCollision(self, SURFACE:pygame.Surface, POS):
-    #     """
-    #     testing whether the current sprite position is overlapping the given sprite's position
-    #     :param SURFACE: surface object
-    #     :param POS: tuple(int)
-    #     :return: bool
-    #     """
-    #     WIDTH = SURFACE.get_width()
-    #     HEIGHT = SURFACE.get_height()
-    #     X = POS[0]
-    #     Y = POS[1]
-    #
-    #     if X >= self.__X - WIDTH and X <= self.__X + self._SURFACE.get_width():
-    #         if Y >= self.__Y - HEIGHT and Y <= self.__Y + self._SURFACE.get_height():
-    #             return True
-    #     return False
-
     def getWidth(self):
         return self._SURFACE.get_width()
 
     def getHeight(self):
         return self._SURFACE.get_height()
+
+    def isCollision(self, SURFACE:pygame.Surface, POS):
+        """
+        testing whether the current sprite position is overlapping the given sprite's position
+        :param SURFACE: surface object
+        :param POS: tuple(int)
+        :return: bool
+        """
+        WIDTH = SURFACE.get_width()
+        HEIGHT = SURFACE.get_height()
+        X = POS[0]
+        Y = POS[1]
+
+        if X >= self.__X - WIDTH and X <= self.__X + self._SURFACE.get_width():
+            if Y >= self.__Y - HEIGHT and Y <= self.__Y + self._SURFACE.get_height():
+                return True
+        return False
+
+    def isNorthCollision(self):
+        pass
+
+    def isEastCollision(self):
+        pass
+
+    def isSouthCollision(self):
+        pass
+
+    def isWestCollision(self):
+        pass
+
+    def getDirX(self):
+        return self.__DIR_X
+
+    def getDirY(self):
+        return self.__DIR_Y
+
+    def getSpeed(self):
+        return self.__SPEED
 
 
 class Box(MySprite):
@@ -98,9 +125,9 @@ class Box(MySprite):
         MySprite.__init__(self, WIDTH, HEIGHT)
         self._SURFACE = pygame.Surface(self._DIM, pygame.SRCALPHA, 32)
         self._SURFACE.fill(self._COLOUR)
+        # self.__NORTH_HITBOX =
 
     # --- modifier --- #
     def setColour(self, TUPLE):
         MySprite.setColour(self, TUPLE)
         self._SURFACE.fill(self._COLOUR)  # polymorphism
-
