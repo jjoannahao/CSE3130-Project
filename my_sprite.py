@@ -86,7 +86,7 @@ class MySprite:
         testing whether the current sprite position is overlapping the given sprite's position
         :param SURFACE: surface object
         :param POS: tuple(int)
-        :return: bool
+        :return: bool or tuple(bool, int, int)
         """
         WIDTH = SURFACE.get_width()
         HEIGHT = SURFACE.get_height()
@@ -95,7 +95,7 @@ class MySprite:
 
         if X >= self.__X - WIDTH and X <= self.__X + self._SURFACE.get_width():
             if Y >= self.__Y - HEIGHT and Y <= self.__Y + self._SURFACE.get_height():
-                return True
+                return (True, X, Y)
         return False
 
     def isNorthCollision(self):
