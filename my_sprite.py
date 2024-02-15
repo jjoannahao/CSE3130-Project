@@ -95,7 +95,7 @@ class MySprite:
 
         if X >= self.__X - WIDTH and X <= self.__X + self._SURFACE.get_width():
             if Y >= self.__Y - HEIGHT and Y <= self.__Y + self._SURFACE.get_height():
-                return (True, X, Y)
+                return True
         return False
 
     def isNorthCollision(self):
@@ -125,7 +125,6 @@ class Box(MySprite):
         MySprite.__init__(self, WIDTH, HEIGHT)
         self._SURFACE = pygame.Surface(self._DIM, pygame.SRCALPHA, 32)
         self._SURFACE.fill(self._COLOUR)
-        # self.__NORTH_HITBOX =
 
     # --- modifier --- #
     def setColour(self, TUPLE):

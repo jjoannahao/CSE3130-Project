@@ -20,6 +20,7 @@ class Ball(Box):
             self.getX() + self.getWidth() // 2 - self.__HIT_BOX.getWidth() // 2,
             self.getY() + self.getHeight() // 2 - self.__HIT_BOX.getHeight() // 2
         )
+        self.__GOING_RIGHT = True
 
     # --- modifiers --- #
     def bounceX(self, MAX_X, MIN_X=0):
@@ -37,6 +38,8 @@ class Ball(Box):
             self.setDirY(1)
 
     # --- accessors --- #
+    def getGoingRight(self):
+        return self.__GOING_RIGHT
 
 
 if __name__ == "__main__":
