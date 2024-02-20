@@ -13,8 +13,8 @@ class Player(Box):
         self.__SCORE = 0
 
     # --- modifiers --- #
-    def updateScore(self):
-        pass
+    def updateScore(self, VALUE):
+        self.__SCORE += VALUE
 
     def ADmove(self, KEY_PRESSES):
         """
@@ -24,8 +24,10 @@ class Player(Box):
         """
         if KEY_PRESSES[pygame.K_d] == 1:  # if D pressed
             self.setX(self.getX() + self.getSpeed()*1.25)
+            self.setDirX(1)
         if KEY_PRESSES[pygame.K_a] == 1:  # if A pressed
             self.setX(self.getX() - self.getSpeed()*1.25)
+            self.setDirX(-1)
         self.setPOS(self.getX(), self.getY())
 
     def checkHorizontalBounds(self, MAX_X, MIN_X=0):

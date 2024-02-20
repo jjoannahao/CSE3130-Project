@@ -38,6 +38,12 @@ class Text:
     def getPOS(self):
         return self.__POS
 
+    def getX(self):
+        return self.__X
+
+    def getY(self):
+        return self.__Y
+
     def getWidth(self):
         return self.__SURFACE.get_width()
 

@@ -98,18 +98,6 @@ class MySprite:
                 return True
         return False
 
-    def isNorthCollision(self):
-        pass
-
-    def isEastCollision(self):
-        pass
-
-    def isSouthCollision(self):
-        pass
-
-    def isWestCollision(self):
-        pass
-
     def getDirX(self):
         return self.__DIR_X
 

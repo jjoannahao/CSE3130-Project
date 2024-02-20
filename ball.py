@@ -20,7 +20,10 @@ class Ball(Box):
             self.getX() + self.getWidth() // 2 - self.__HIT_BOX.getWidth() // 2,
             self.getY() + self.getHeight() // 2 - self.__HIT_BOX.getHeight() // 2
         )
-        self.__GOING_RIGHT = True
+        if self.getDirX() == 1:
+            self.__GOING_RIGHT = True
+        else:
+            self.__GOING_RIGHT = False
 
     # --- modifiers --- #
     def bounceX(self, MAX_X, MIN_X=0):
@@ -40,27 +43,4 @@ class Ball(Box):
     # --- accessors --- #
     def getGoingRight(self):
         return self.__GOING_RIGHT
-
-
-if __name__ == "__main__":
-    from window import Window
-    pygame.init()
-
-    WINDOW = Window("Test")
-    BALL = Ball(20, 20)
-    BALL.setPOS(WINDOW.getWidth()//2, WINDOW.getHeight()//2)
-    BALL.setColour((255, 0, 0))
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
-
-        BALL.bounceX(WINDOW.getWidth())
-        BALL.bounceY(WINDOW.getHeight())
-
-        WINDOW.clearScreen()
-        WINDOW.getSurface().blit(BALL.getSurface(), BALL.getPOS())
-        WINDOW.updateFrame()
 
