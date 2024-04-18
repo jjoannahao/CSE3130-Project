@@ -40,3 +40,7 @@ Points: Players receive 10 points for every brick broken, which accumulates over
 
 ## Reflection
 Overall, this process was more time-consuming and difficult than expected. Initially, I struggled to conceptualize how to structure classes and objects to construct the game, and I often found myself unsure how to use example code to help me create unique classes and objects for Brick Breaker. After planning out and visualizing how I wanted to structure my game, however, the challenge became properly programming the logic. There were various parts of the program that I struggled with coding, but none compared to the logic of the ball bouncing off of the paddle and bricks. I overcomplicated it in numerous ways before I realized that trying to generalize all of the interactions significantly simplified my code into two cases (reflection in one direction and reflection in another direction), which is the part of my program I am most proud of solving. 
+## Planning
+![UML Tables](CSE3130_UMLs.drawio.png)
+
+![Flowchart](CSE3130_Flowchart.drawio.png)
